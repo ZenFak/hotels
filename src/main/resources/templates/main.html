@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Бронирование отелей</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main>
+    <div class="hotel">
+        <div th:each="el : ${hotels}">
+            <img th:src="${el.pathToPic}" alt="Отель 1">
+            <h2 th:text="${el.name}"/>
+            <p th:text="${el.description}"/>
+            <a th:href="'/hotel/' + ${el.hotelID}">Подробнее</a>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

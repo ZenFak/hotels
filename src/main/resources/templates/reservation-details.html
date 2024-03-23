@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/hotel-details.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Title</title>
+</head>
+
+<header th:insert="blocks/header :: header"></header>
+
+<body>
+<div th:each="el : ${order}">
+    <div class="containercard">
+        <div class="content">
+
+            <p>Номер вашего заказа: </p>
+            <h3 th:text="${el.orderID}"></h3>
+            <p>Дата заселения: </p>
+            <h3 th:text="${el.startDate}"></h3>
+            <p>Дата выселения: </p>
+            <h3 th:text="${el.endDate}" id="price"></h3>
+            <p>Общая стоимость: </p>
+            <h3 th:text="${el.totalCost}"></h3>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

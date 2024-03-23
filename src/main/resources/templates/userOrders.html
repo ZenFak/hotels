@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<header th:insert="blocks/header :: header"></header>
+
+<body>
+<div class="container mt-5">
+    <h1>Ваши заказы:</h1>
+    <div th:each="el : ${orders}" class="alert alert-info mt-2">
+        <h3 th:text="${el.orderID}"></h3>
+        <h3 th:text="${el.hotel.getName()}"></h3>
+        <h3 th:text="${el.totalCost}"></h3>
+        <h3 th:text="${'Дата заселения: ' + el.getStartDate()}"></h3>
+        <h3 th:text="${'Дата выселения: ' + el.getEndDate()}"></h3>
+        <form th:action="'/order/' + ${el.orderID} + '/delete'" method="post">
+            <input type="hidden" id="userID" th:value="${el.getUserProfile().getUserProfileId()}">
+            <input type="submit" class="red-button" value="Отменить бронь">
+        </form>
+    </div>
+</div>
+</body>
+</html>

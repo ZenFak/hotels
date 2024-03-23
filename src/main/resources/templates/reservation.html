@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/reservation.html">
+    <title>Бронирование номера</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main>
+    <div th:each="el : ${hotels}">
+        <div class="booking-form">
+            <h2>Бронирование номера</h2>
+            <form th:action="'/hotel/' +${el.hotelID} + '/reservation'" method="post">
+                <label for="checkInDate">Дата заселения:</label>
+                <input type="date" id="checkInDate" name="checkInDate" required>
+
+                <label for="checkOutDate">Дата выселения:</label>
+                <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+                <!--
+                <label for="totalCost">Итоговая стоимость:</label>
+                <input type="text" id="totalCost" name="totalCost" readonly>
+                -->
+
+                <button type="submit">Забронировать</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/hotel-details.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Информация об отеле</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main>
+    <div class="hotel-page">
+        <div th:each="el : ${hotels}">
+            <img th:src="${el.pathToPic}" alt="Отель">
+            <h2 th:text="${el.name}"/>
+            <p th:text="${el.price}"/>
+            <p th:text="${el.description}"/>
+            <a th:href="'/hotel/' + ${el.hotelID} + '/reservation'">Забронировать</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<header th:insert="blocks/header :: header"></header>
+
+<body>
+<div th:each="el : ${userProfile}">
+    <div class="containercard">
+        <div class="image-container">
+            <img src="/img/user.jpg" alt="User">
+        </div>
+        <div class="content">
+
+            <h3 th:text="${el.userProfileId}"></h3>
+            <h3 th:text="${el.firstname}"></h3>
+
+            <a th:href="'/getProfile/' + ${el.userProfileId} + '/orders'">View Orders</a>
+            <a href="/login" class="btn btn-danger">Log-out</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
